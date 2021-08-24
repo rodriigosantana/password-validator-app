@@ -1,0 +1,61 @@
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Sample API",
+    "description" : "Sample API",
+    "version" : "1"
+  },
+  "paths" : {
+    "/v1/validatePassword" : {
+      "post" : {
+        "summary" : "Validate Password",
+        "operationId" : "validatePassword",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/PasswordRequestDto"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "Response if the password is valid!",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/PasswordResponseDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "PasswordRequestDto" : {
+        "required" : [ "password" ],
+        "type" : "object",
+        "properties" : {
+          "password" : {
+            "type" : "string"
+          }
+        }
+      },
+      "PasswordResponseDto" : {
+        "type" : "object",
+        "properties" : {
+          "passwordIsValid" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    }
+  }
+}
